@@ -1,0 +1,459 @@
+{
+  "about": "Dipriva Consulting Group brand standards for videos and share copy made with /brag in this fork. Mirrors the dipriva-brand skill and the dipriva-social content gate. Change a rule here only with Manuel Dipres.",
+  "company": {
+    "name": "Dipriva Consulting Group",
+    "website": "https://www.dipriva.com",
+    "serviceLines": [
+      "Corporate Strategy",
+      "Startup Operations",
+      "AI and Automation"
+    ]
+  },
+  "voice": {
+    "pillars": [
+      "Professional",
+      "Direct",
+      "Authoritative",
+      "Strategic"
+    ],
+    "headlinePattern": "Verb + object + strategic modifier. Title Case. No period. Example: Eliminate Off-Brand Copy in Code",
+    "preferredVerbs": [
+      "engineer",
+      "architect",
+      "extract",
+      "prune",
+      "eliminate",
+      "secure",
+      "accelerate",
+      "calibrate",
+      "deploy",
+      "operationalize"
+    ],
+    "closeWith": "A statement, never a question",
+    "maxHashtags": 3,
+    "emoji": false
+  },
+  "visual": {
+    "palette": {
+      "navy": "#2F4059",
+      "cream": "#F5F5DC",
+      "sand": "#E8E4D9"
+    },
+    "signal": {
+      "reject": "#C8553D",
+      "note": "Signal colour only for a rejection or failure state. Never decoration."
+    },
+    "fonts": {
+      "headline": "Playfair Display",
+      "body": "Inter",
+      "license": "SIL Open Font License, shipped locally, never fetched from a CDN"
+    },
+    "aiNotice": "Never burned into the video. Use each platform's own AI label when posting."
+  },
+  "languages": {
+    "social": [
+      "en"
+    ],
+    "website and downloads": [
+      "en",
+      "es"
+    ],
+    "spanish": "Professional business Spanish, formal usted, same direct tone"
+  },
+  "claims": {
+    "rule": "The only client results allowed are these proof points. Any other figure needs a cited source. No invented numbers, logos or testimonials.",
+    "proofPoints": [
+      {
+        "segment": "Insurance agency",
+        "statement": "Defined sales strategy increased per-client policy premiums by $1,000 and improved renewal rates by 13%.",
+        "source": "https://www.dipriva.com/about/manuel-dipres"
+      },
+      {
+        "segment": "Roofing company",
+        "statement": "Sales team alignment improved the lead-to-close ratio by 20% over a 6-month window.",
+        "source": "https://www.dipriva.com/about/manuel-dipres"
+      },
+      {
+        "segment": "Tax agency",
+        "statement": "Re-purchase rate increased by 9 percentage points and services were upsold to Schedule C clients.",
+        "source": "https://www.dipriva.com/about/manuel-dipres"
+      }
+    ],
+    "firmFigures": [
+      {
+        "fact": "90-day execution roadmap",
+        "figures": [
+          "90"
+        ]
+      },
+      {
+        "fact": "10 to 500 employee companies",
+        "figures": [
+          "10",
+          "500"
+        ]
+      },
+      {
+        "fact": "20+ years of experience",
+        "figures": [
+          "20+"
+        ]
+      },
+      {
+        "fact": "30-minute strategy session",
+        "figures": [
+          "30"
+        ]
+      }
+    ]
+  },
+  "callsToAction": [
+    {
+      "id": "book-session",
+      "text": "Book a free 30-minute strategy session",
+      "page": "dipriva.com/schedule",
+      "serviceLines": [
+        "corporate-strategy",
+        "startup-operations",
+        "ai-automation"
+      ]
+    },
+    {
+      "id": "sales-kit",
+      "text": "Get the free Sales Follow-Up Kit",
+      "page": "dipriva.com/strategy",
+      "serviceLines": [
+        "corporate-strategy"
+      ]
+    },
+    {
+      "id": "automate-first",
+      "text": "Get the free Where to Automate First worksheet",
+      "page": "dipriva.com/ai-automation",
+      "serviceLines": [
+        "ai-automation"
+      ]
+    },
+    {
+      "id": "roadmap-90",
+      "text": "Get the free 90-Day Operating Roadmap",
+      "page": "dipriva.com/startup",
+      "serviceLines": [
+        "startup-operations"
+      ]
+    }
+  ],
+  "statements": {
+    "apis": "Official APIs only. No scraping or browser automation of social platforms.",
+    "approval": "Nothing posts without approval."
+  },
+  "bannedTerms": [
+    {
+      "label": "leverage",
+      "pattern": "leverag(e|es|ed|ing)",
+      "langs": [
+        "en",
+        "es"
+      ]
+    },
+    {
+      "label": "synergy",
+      "pattern": "synerg(y|ies)",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "sinergia",
+      "pattern": "sinergias?",
+      "langs": [
+        "es"
+      ]
+    },
+    {
+      "label": "holistic",
+      "pattern": "holistic(ally)?",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "holistico",
+      "pattern": "hol[ií]stic[oa]s?",
+      "langs": [
+        "es"
+      ]
+    },
+    {
+      "label": "empower",
+      "pattern": "empower(s|ed|ing|ment)?",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "empoderar",
+      "pattern": "empoder\\w*",
+      "langs": [
+        "es"
+      ]
+    },
+    {
+      "label": "journey",
+      "pattern": "journeys?",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "ecosystem",
+      "pattern": "ecosystems?",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "ecosistema",
+      "pattern": "ecosistemas?",
+      "langs": [
+        "es"
+      ]
+    },
+    {
+      "label": "game-changer",
+      "pattern": "game[- ]?changers?",
+      "langs": [
+        "en",
+        "es"
+      ]
+    },
+    {
+      "label": "innovative",
+      "pattern": "innovative",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "innovador",
+      "pattern": "innovador(a|es|as)?",
+      "langs": [
+        "es"
+      ]
+    },
+    {
+      "label": "cutting-edge",
+      "pattern": "cutting[- ]edge",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "de vanguardia",
+      "pattern": "de vanguardia",
+      "langs": [
+        "es"
+      ]
+    },
+    {
+      "label": "passionate",
+      "pattern": "passionate",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "apasionado",
+      "pattern": "apasionad[oa]s?",
+      "langs": [
+        "es"
+      ]
+    },
+    {
+      "label": "dynamic",
+      "pattern": "dynamic",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "dinamico",
+      "pattern": "din[aá]mic[oa]s?",
+      "langs": [
+        "es"
+      ]
+    },
+    {
+      "label": "solution provider",
+      "pattern": "solution[- ]providers?",
+      "langs": [
+        "en"
+      ]
+    }
+  ],
+  "engagementBait": [
+    {
+      "label": "DM me",
+      "pattern": "dm me",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "comment yes/below",
+      "pattern": "comment (yes|below|your|[\"“])",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "tag someone",
+      "pattern": "tag (a|someone|your)",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "like and share",
+      "pattern": "like (and|&) share",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "share if",
+      "pattern": "share (this )?(if|with)",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "follow for",
+      "pattern": "follow (me )?for",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "link in bio/comments",
+      "pattern": "link in (the )?(bio|comments)",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "escribeme por DM",
+      "pattern": "escr[ií]beme por (dm|mensaje privado)",
+      "langs": [
+        "es"
+      ]
+    },
+    {
+      "label": "comenta si/abajo",
+      "pattern": "comenta (s[ií]|abajo|tu)",
+      "langs": [
+        "es"
+      ]
+    },
+    {
+      "label": "etiqueta a",
+      "pattern": "etiqueta a",
+      "langs": [
+        "es"
+      ]
+    },
+    {
+      "label": "comparte si",
+      "pattern": "comparte (esto )?si",
+      "langs": [
+        "es"
+      ]
+    },
+    {
+      "label": "enlace en bio",
+      "pattern": "(enlace|link) en (la )?(bio|comentarios)",
+      "langs": [
+        "es"
+      ]
+    }
+  ],
+  "warnTerms": [
+    {
+      "label": "hedge: might",
+      "pattern": "might",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "hedge: could potentially",
+      "pattern": "could potentially",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "hedge: seems like",
+      "pattern": "seems like",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "hedge: kind of",
+      "pattern": "kind of",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "hedge: sort of",
+      "pattern": "sort of",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "hedge: quizas",
+      "pattern": "quiz[aá]s",
+      "langs": [
+        "es"
+      ]
+    },
+    {
+      "label": "hedge: tal vez",
+      "pattern": "tal vez",
+      "langs": [
+        "es"
+      ]
+    },
+    {
+      "label": "filler: unlock",
+      "pattern": "unlock(s|ed|ing)?",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "filler: delve",
+      "pattern": "delv(e|es|ed|ing)",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "filler: dive into",
+      "pattern": "dive into",
+      "langs": [
+        "en"
+      ]
+    },
+    {
+      "label": "filler: in today's",
+      "pattern": "in today['’]s",
+      "langs": [
+        "en"
+      ]
+    }
+  ]
+}

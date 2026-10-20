@@ -1,0 +1,406 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Dipriva Social</title>
+<style>
+@font-face { font-family: 'Playfair Display'; src: url(assets/fonts/playfair-display-latin.woff2) format('woff2'); font-weight: 400 900; }
+@font-face { font-family: 'Playfair Display'; src: url(assets/fonts/playfair-display-latin-ext.woff2) format('woff2'); font-weight: 400 900; unicode-range: U+0100-02BA, U+1E00-1EFF; }
+@font-face { font-family: 'Inter'; src: url(assets/fonts/inter-latin.woff2) format('woff2'); font-weight: 100 900; }
+@font-face { font-family: 'Inter'; src: url(assets/fonts/inter-latin-ext.woff2) format('woff2'); font-weight: 100 900; unicode-range: U+0100-02BA, U+1E00-1EFF; }
+:root { --navy: #2F4059; --cream: #F5F5DC; --sand: #E8E4D9; --deep: #222F43; --brick: #C8553D; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--navy); }
+#stage { position: absolute; inset: 0; background: var(--navy); font-family: 'Inter', sans-serif; color: var(--cream); overflow: hidden; }
+.abs { position: absolute; }
+.scene { position: absolute; inset: 0; opacity: 0; }
+.serif { font-family: 'Playfair Display', serif; font-weight: 700; letter-spacing: -0.5px; }
+.mono { font-family: 'DejaVu Sans Mono', monospace; }
+.h { position: absolute; left: 96px; width: 880px; line-height: 1.08; }
+.sub { position: absolute; left: 96px; font-size: 34px; font-weight: 500; }
+
+#mark { position: absolute; left: 96px; top: 282px; display: flex; align-items: center; gap: 22px; font-family: 'Playfair Display', serif; font-size: 34px; letter-spacing: 8px; }
+#mark .rule { width: 60px; height: 2px; background: currentColor; }
+
+/* scene 1: laptop */
+#laptop { left: 96px; top: 690px; width: 824px; }
+#lid { width: 824px; height: 540px; border-radius: 26px 26px 0 0; background: #15181D; padding: 22px 22px 26px; box-shadow: 0 40px 80px rgba(0,0,0,0.35); }
+#screen { width: 100%; height: 100%; border-radius: 8px; background: #FFFEF6; color: var(--navy); overflow: hidden; }
+#bar { height: 46px; background: var(--sand); display: flex; align-items: center; gap: 10px; padding: 0 18px; }
+#bar i { width: 13px; height: 13px; border-radius: 50%; background: rgba(47,64,89,0.28); display: block; }
+#bar span { margin-left: 16px; font-size: 18px; color: rgba(47,64,89,0.7); }
+#editor { padding: 26px 30px; }
+#editor .label { font-size: 18px; letter-spacing: 4px; text-transform: uppercase; color: rgba(47,64,89,0.6); }
+#idea { margin-top: 12px; font-size: 31px; line-height: 1.36; min-height: 210px; }
+#caret { display: inline-block; width: 3px; height: 32px; background: var(--navy); vertical-align: -5px; margin-left: 3px; }
+.chips { display: flex; gap: 12px; margin-top: 18px; }
+.chip { font-size: 20px; padding: 7px 16px; border-radius: 999px; border: 2px solid rgba(47,64,89,0.35); }
+#base { margin-left: -60px; width: 944px; height: 30px; border-radius: 0 0 26px 26px; background: linear-gradient(#C9C5BA, #9E9A90); position: relative; }
+#base::after { content: ''; position: absolute; left: 50%; top: 0; width: 150px; height: 10px; margin-left: -75px; border-radius: 0 0 10px 10px; background: rgba(0,0,0,0.18); }
+
+/* scene 2 */
+#toggle { left: 96px; top: 600px; width: 220px; height: 64px; border-radius: 999px; border: 2px solid rgba(47,64,89,0.35); }
+#knob { position: absolute; top: 5px; left: 5px; width: 104px; height: 50px; border-radius: 999px; background: var(--navy); }
+#toggle span { position: absolute; top: 0; width: 110px; height: 60px; line-height: 60px; text-align: center; font-weight: 600; font-size: 26px; letter-spacing: 2px; }
+.card { position: absolute; width: 400px; height: 360px; border-radius: 20px; background: #FFFEF6; border: 2px solid rgba(47,64,89,0.14); padding: 30px 30px; color: var(--navy); box-shadow: 0 18px 40px rgba(47,64,89,0.10); }
+.card .plat { font-size: 22px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; }
+.card .fmt { font-size: 20px; color: rgba(47,64,89,0.62); margin-top: 6px; }
+.card .hl { position: relative; height: 92px; margin-top: 20px; }
+.card .hl div { position: absolute; inset: 0; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 34px; line-height: 1.15; }
+.card .bd { position: relative; height: 84px; margin-top: 12px; }
+.card .bd div { position: absolute; inset: 0; font-size: 21px; line-height: 1.36; color: rgba(47,64,89,0.75); }
+.card .ok { position: absolute; right: 26px; bottom: 20px; font-size: 20px; font-weight: 700; letter-spacing: 2px; color: var(--navy); }
+
+/* scene 3 */
+#term { left: 96px; top: 600px; width: 824px; height: 560px; border-radius: 22px; background: var(--deep); border: 2px solid rgba(245,245,220,0.12); padding: 40px 40px; }
+#cmd { font-size: 26px; color: rgba(245,245,220,0.85); white-space: pre; }
+#draft { margin-top: 34px; padding: 26px 28px; border-radius: 14px; background: rgba(245,245,220,0.05); border-left: 4px solid rgba(245,245,220,0.3); position: relative; }
+#draft .dh { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 40px; line-height: 1.2; }
+#draft .db { font-size: 30px; margin-top: 12px; color: rgba(245,245,220,0.85); }
+.bad { position: relative; display: inline-block; }
+.bad i { position: absolute; left: -6px; right: -6px; top: 4px; bottom: 0; border-radius: 6px; border-bottom: 4px solid rgba(200,85,61,0); }
+#out { margin-top: 34px; font-size: 23px; line-height: 1.45; }
+#out .line { opacity: 0; }
+#out .fail { color: #E8806B; font-weight: 700; font-size: 26px; }
+#out .tag { color: #E8806B; }
+#out .msg { color: rgba(245,245,220,0.82); padding-left: 2ch; }
+#stamp { left: 430px; top: 790px; padding: 14px 30px; border: 6px solid var(--brick); border-radius: 12px; color: #E8806B; font-weight: 800; font-size: 54px; letter-spacing: 8px; background: rgba(34,47,67,0.9); }
+
+/* scene 4: Facebook and Instagram */
+.phone { position: absolute; top: 640px; width: 400px; height: 711px; border-radius: 44px; background: #111; padding: 10px; box-shadow: 0 30px 60px rgba(47,64,89,0.28); }
+.scr { position: relative; width: 380px; height: 691px; border-radius: 36px; background: #fff; overflow: hidden; color: #1C1E21; font-family: 'Inter'; }
+.feedtop { height: 48px; border-bottom: 1px solid #E4E6EB; display: flex; align-items: center; justify-content: center; font-size: 19px; font-weight: 700; color: #65676B; padding-top: 6px; }
+.post { position: absolute; left: 0; top: 48px; width: 380px; background: #fff; }
+.ph { display: flex; align-items: center; gap: 10px; padding: 12px 14px; }
+.ph img { width: 40px; height: 40px; border-radius: 50%; }
+.ph b { font-size: 16px; display: block; }
+.ph small { font-size: 13px; color: #65676B; }
+.cap { padding: 0 14px 10px; font-size: 15px; line-height: 1.38; }
+.pimg { width: 380px; height: 475px; display: block; }
+.acts { display: flex; justify-content: space-around; padding: 10px 6px; font-size: 15px; font-weight: 600; color: #65676B; border-top: 1px solid #E4E6EB; }
+.igacts { display: flex; gap: 16px; padding: 10px 14px 4px; }
+.igacts svg { width: 26px; height: 26px; }
+.dots { position: absolute; left: 0; right: 0; top: 534px; display: flex; justify-content: center; gap: 5px; }
+.dots i { width: 6px; height: 6px; border-radius: 50%; background: #C4C4C4; display: block; }
+.dots i:first-child { background: #0095F6; }
+.plabel { position: absolute; top: 1374px; width: 400px; text-align: center; font-size: 26px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--navy); }
+.toast { position: absolute; left: 50%; top: 8px; transform: translateX(-50%); white-space: nowrap; background: var(--navy); color: var(--cream); font-size: 17px; font-weight: 600; padding: 9px 16px; border-radius: 999px; }
+
+/* scene 5 */
+.row { position: absolute; left: 96px; width: 824px; display: flex; align-items: center; gap: 22px; font-size: 32px; }
+.tick { width: 48px; height: 48px; border-radius: 50%; border: 3px solid var(--cream); display: flex; align-items: center; justify-content: center; }
+.tick svg { width: 26px; height: 26px; }
+.row .note { margin-left: auto; font-size: 24px; color: rgba(245,245,220,0.62); }
+#veto { left: 96px; top: 920px; width: 824px; }
+#veto .lab { display: flex; justify-content: space-between; font-size: 26px; color: rgba(245,245,220,0.8); }
+#veto .bar { margin-top: 14px; height: 18px; border-radius: 9px; background: rgba(245,245,220,0.14); overflow: hidden; }
+#veto .fill { height: 100%; width: 0; background: var(--cream); }
+#ledger { left: 96px; top: 1080px; width: 824px; border-radius: 18px; background: var(--deep); padding: 26px 30px; }
+#ledger .t { font-size: 22px; letter-spacing: 4px; text-transform: uppercase; color: rgba(245,245,220,0.6); margin-bottom: 8px; }
+.lrow { display: flex; justify-content: space-between; align-items: baseline; font-size: 20px; padding: 9px 0; border-top: 1px solid rgba(245,245,220,0.1); opacity: 0; }
+.lrow .st { font-family: 'Inter'; font-size: 22px; font-weight: 600; }
+
+/* scene 6: call to action */
+#end1 { left: 96px; top: 400px; width: 900px; font-size: 92px; line-height: 1.06; color: var(--navy); }
+#end1b { left: 96px; top: 620px; font-size: 34px; color: rgba(47,64,89,0.8); font-weight: 500; width: 824px; line-height: 1.4; }
+#cta { left: 96px; top: 800px; width: 824px; border-radius: 22px; background: var(--navy); color: var(--cream); padding: 50px 52px 54px; box-shadow: 0 30px 60px rgba(47,64,89,0.25); }
+#cta .k { font-size: 22px; letter-spacing: 6px; text-transform: uppercase; color: rgba(245,245,220,0.7); }
+#cta .t { margin-top: 18px; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 62px; line-height: 1.1; }
+#cta .u { margin-top: 34px; display: inline-flex; align-items: center; gap: 18px; font-size: 40px; font-weight: 700; background: var(--cream); color: var(--navy); padding: 18px 30px; border-radius: 14px; }
+#cta .u svg { width: 34px; height: 34px; }
+#end2 { left: 96px; top: 1290px; font-size: 28px; color: var(--navy); font-weight: 500; }
+#end3 { left: 96px; top: 1360px; color: var(--navy); display: flex; align-items: center; gap: 22px; font-family: 'Playfair Display', serif; font-size: 36px; letter-spacing: 9px; }
+#end3 .rule { width: 70px; height: 2px; background: var(--navy); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="wipe" style="position:absolute;left:0;top:0;width:1080px;height:1920px;"></div>
+  <div id="mark"><div class="rule"></div><div>DIPRIVA SOCIAL</div></div>
+
+  <!-- 1: the idea goes into the laptop -->
+  <div class="scene" id="s1">
+    <div class="h serif" id="s1h" style="top:380px;font-size:104px;">Brief One Idea</div>
+    <div class="sub" id="s1s" style="top:530px;">Type it once. The engine does the rest.</div>
+    <div class="abs" id="laptop">
+      <div id="lid"><div id="screen">
+        <div id="bar"><i></i><i></i><i></i><span>New brief</span></div>
+        <div id="editor">
+          <div class="label">The idea</div>
+          <div id="idea"><span id="ideaText"></span><span id="caret"></span></div>
+          <div class="chips"><div class="chip" id="c1">Facebook</div><div class="chip" id="c2">Instagram</div><div class="chip" id="c3">EN + ES</div></div>
+        </div>
+      </div></div>
+      <div id="base"></div>
+    </div>
+  </div>
+
+  <!-- 2: drafts per Meta format, EN and ES -->
+  <div class="scene" id="s2">
+    <div class="h serif" id="s2h" style="top:380px;font-size:68px;color:var(--navy);">Draft Every Meta Format</div>
+    <div class="sub" id="s2s" style="top:480px;color:var(--navy);">In English and Spanish.</div>
+    <div class="abs" id="toggle"><div id="knob"></div><span id="tEN" style="left:2px">EN</span><span id="tES" style="left:108px">ES</span></div>
+  </div>
+
+  <!-- 3: the gate -->
+  <div class="scene" id="s3">
+    <div class="h serif" id="s3h" style="top:380px;font-size:84px;">Eliminate Off-Brand<br>Copy in Code</div>
+    <div class="abs" id="term">
+      <div id="cmd" class="mono"></div>
+      <!-- brand-exempt:start (the rejected example the gate catches, shown on purpose) -->
+      <div id="draft">
+        <div class="dh">An <span class="bad" id="bw"><i></i>innovative</span> way to automate</div>
+        <div class="db">Score it instead<span class="bad" id="bd"><i></i>&#8212;</span>every task.</div>
+      </div>
+      <div id="out" class="mono">
+        <div class="line fail" id="o1">FAIL draft.json</div>
+        <div class="line" id="o2"><span class="tag">error</span>  en.headline: "innovative"</div>
+        <div class="line msg" id="o3">Rewrite with a stronger Dipriva word. [banned-word]</div>
+        <div class="line" id="o4"><span class="tag">error</span>  en.body: Em dashes and dash</div>
+        <div class="line msg" id="o5">substitutes are not allowed. Use a period,</div>
+        <div class="line msg" id="o6">comma, colon or parentheses. [no-em-dash]</div>
+      </div>
+      <!-- brand-exempt:end -->
+    </div>
+    <div class="abs" id="stamp">REJECTED</div>
+  </div>
+
+  <!-- 4: live on Facebook and Instagram -->
+  <div class="scene" id="s4">
+    <div class="h serif" id="s4h" style="top:380px;font-size:80px;color:var(--navy);">Publish to Facebook<br>and Instagram</div>
+    <div class="phone" id="pfb" style="left:96px"><div class="scr">
+      <div class="feedtop">Feed</div>
+      <div class="post" id="fbpost">
+        <div class="ph"><img src="assets/media/profile.png"><div><b>Dipriva Consulting Group</b><small>Just now</small></div></div>
+        <div class="cap">Most proposals do not end with a no. They end in silence.</div>
+        <img class="pimg" src="assets/media/car-s-0.png">
+        <div class="acts"><span>Like</span><span>Comment</span><span>Share</span></div>
+      </div>
+      <div class="toast" id="fbt">Published via Graph API</div>
+    </div></div>
+    <div class="phone" id="pig" style="left:520px"><div class="scr">
+      <div class="feedtop">Feed</div>
+      <div class="post" id="igpost">
+        <div class="ph"><img src="assets/media/profile.png"><div><b>dipriva_consulting_group</b></div></div>
+        <img class="pimg" src="assets/media/car-a-0.png">
+        <div class="dots"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="igacts">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1C1E21" stroke-width="2"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1C1E21" stroke-width="2"><path d="M20 12a8 8 0 1 1-3.2-6.4L20 4v8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#1C1E21" stroke-width="2"><path d="M21 3L10 14M21 3l-7 18-4-7-7-4 18-7z"/></svg>
+        </div>
+        <div class="cap" style="padding-top:6px"><b>dipriva_consulting_group</b> Automate the right task first.</div>
+      </div>
+      <div class="toast" id="igt">Published via Graph API</div>
+    </div></div>
+    <div class="plabel" id="lfb" style="left:96px">Facebook</div>
+    <div class="plabel" id="lig" style="left:520px">Instagram</div>
+  </div>
+
+  <!-- 5: approval -->
+  <div class="scene" id="s5">
+    <div class="h serif" id="s5h" style="top:380px;font-size:84px;">Nothing Posts<br>Without Approval</div>
+    <div class="row" id="r1" style="top:620px"><div class="tick"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#F5F5DC" stroke-width="3"/></svg></div>Code checks pass<div class="note mono">verify.ts</div></div>
+    <div class="row" id="r2" style="top:716px"><div class="tick"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#F5F5DC" stroke-width="3"/></svg></div>Independent review, every score 4+</div>
+    <div class="row" id="r3" style="top:812px"><div class="tick"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="#F5F5DC" stroke-width="3"/></svg></div>Verdict bound to the exact bytes</div>
+    <div class="abs" id="veto"><div class="lab"><span>12-hour veto window</span><span>label <b>hold</b> stops it</span></div><div class="bar"><div class="fill" id="vfill"></div></div></div>
+    <div class="abs" id="ledger">
+      <div class="t">content/ledger.json</div>
+      <div class="lrow mono" id="l1"><span>automate-the-right-task|instagram</span><span class="st">published</span></div>
+      <div class="lrow mono" id="l2"><span>automate-the-right-task|facebook</span><span class="st">published</span></div>
+      <div class="lrow mono" id="l3" style="color:rgba(245,245,220,0.55)"><span>automate-the-right-task|instagram</span><span class="st">in ledger, skipped</span></div>
+    </div>
+  </div>
+
+  <!-- 6: call to action -->
+  <div class="scene" id="s6">
+    <div class="abs serif" id="end1">Engineer Your<br>Content System</div>
+    <div class="abs" id="end1b">Dipriva builds and runs this engine for your business.</div>
+    <div class="abs" id="cta">
+      <div class="k">Access Dipriva Social</div>
+      <div class="t">Book a free 30-minute strategy session</div>
+      <div class="u"><svg viewBox="0 0 24 24" fill="none" stroke="#2F4059" stroke-width="2.4"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>dipriva.com/schedule</div>
+    </div>
+    <div class="abs" id="end2">Official Meta APIs only. No scraping.</div>
+    <div class="abs" id="end3"><div class="rule"></div><div>DIPRIVA</div></div>
+  </div>
+</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const easeOut = (x) => 1 - Math.pow(1 - x, 3);
+const easeInOut = (x) => x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const mix = (a, b, x) => a + (b - a) * x;
+const NAVY = [47, 64, 89], CREAM = [245, 245, 220];
+const rgb = (c) => `rgb(${c.map(Math.round).join(',')})`;
+const mixc = (a, b, x) => a.map((v, i) => mix(v, b[i], x));
+
+// Scene cuts sit on the 96 BPM grid (one beat = 0.625 s).
+const S = [
+  {id: 's1', a: 0.0, b: 3.75, bg: NAVY},
+  {id: 's2', a: 3.75, b: 7.5, bg: CREAM},
+  {id: 's3', a: 7.5, b: 12.5, bg: NAVY},
+  {id: 's4', a: 12.5, b: 16.875, bg: CREAM},
+  {id: 's5', a: 16.875, b: 20.625, bg: NAVY},
+  {id: 's6', a: 20.625, b: 25.0, bg: CREAM},
+];
+window.DURATION = 25.0;
+
+function rise(el, t, start, dist = 50, dur = 0.55) {
+  const p = easeOut(prog(t, start, start + dur));
+  el.style.opacity = p;
+  el.style.transform = `translateY(${(1 - p) * dist}px)`;
+  return p;
+}
+
+const EN_H = 'Automate the Right Task First';
+const ES_H = 'Automatice primero la tarea correcta';
+const EN_B = 'Most teams automate the task that annoys them most.';
+const ES_B = 'La mayoría de los equipos automatiza la tarea que más les molesta.';
+const PLATS = [
+  ['Facebook', 'Feed carousel, links allowed'],
+  ['Instagram', 'Feed carousel, JPEG'],
+  ['Facebook', 'Story, 1080 x 1920'],
+  ['Instagram', 'Story, 1080 x 1920'],
+];
+const cards = PLATS.map(([name, fmt], i) => {
+  const c = document.createElement('div');
+  c.className = 'card';
+  c.style.left = (96 + (i % 2) * 424) + 'px';
+  c.style.top = (700 + Math.floor(i / 2) * 384) + 'px';
+  c.innerHTML = `<div class="plat">${name}</div><div class="fmt">${fmt}</div>
+    <div class="hl"><div class="en">${EN_H}</div><div class="es">${ES_H}</div></div>
+    <div class="bd"><div class="en">${EN_B}</div><div class="es">${ES_B}</div></div>
+    <div class="ok">GATE PASS</div>`;
+  $('s2').appendChild(c);
+  return c;
+});
+
+const IDEA = 'Most teams automate the task that annoys them most. The right first task scores highest on hours, repeatability and low cost of a mistake.';
+const CMD = '$ node src/gate/cli.ts draft.json';
+
+window.assetsReady = async () => {
+  await document.fonts.ready;
+  await Promise.all([...document.images].map((im) => im.decode().catch(() => {})));
+  await Promise.all(['700 40px "Playfair Display"', '400 40px Inter', '700 40px Inter'].map((f) => document.fonts.load(f)));
+};
+
+window.render = function (t) {
+  // background: the next scene's color wipes up from the bottom
+  let bg = S[0].bg, wipeColor = S[0].bg, wipeY = 1, markOnNew = 0;
+  for (let i = 1; i < S.length; i++) {
+    if (t >= S[i].a - 0.12) {
+      const x = easeInOut(prog(t, S[i].a - 0.12, S[i].a + 0.24));
+      bg = S[i - 1].bg; wipeColor = S[i].bg; wipeY = 1 - x;
+      markOnNew = x > 0.86 ? 1 : 0;
+      if (x >= 1) { bg = S[i].bg; wipeY = 1; }
+    }
+  }
+  $('stage').style.background = rgb(bg);
+  $('wipe').style.background = rgb(wipeColor);
+  $('wipe').style.transform = `translateY(${wipeY * 1920}px)`;
+  const markBg = markOnNew ? wipeColor : bg;
+  $('mark').style.color = rgb(markBg[0] > 150 ? NAVY : CREAM);
+  $('mark').style.opacity = t > 20.45 ? 1 - prog(t, 20.45, 20.6) : prog(t, 0, 0.4);
+
+  for (const s of S) {
+    const inP = s.a === 0 ? 1 : prog(t, s.a + 0.12, s.a + 0.4);
+    const outP = s.id === 's6' ? 0 : prog(t, s.b - 0.28, s.b - 0.08);
+    $(s.id).style.opacity = t < s.a || t > s.b ? 0 : inP * (1 - outP);
+  }
+
+  // 1
+  if (t < 3.85) {
+    rise($('s1h'), t, 0.0, 60, 0.6);
+    rise($('s1s'), t, 0.2, 30, 0.5);
+    rise($('laptop'), t, 0.3, 90, 0.7);
+    const n = Math.floor(IDEA.length * prog(t, 0.8, 2.6));
+    $('ideaText').textContent = IDEA.slice(0, n);
+    $('caret').style.opacity = t > 2.6 ? ((t * 2.2) % 1 < 0.55 ? 1 : 0) : 1;
+    ['c1', 'c2', 'c3'].forEach((c, i) => {
+      const p = easeOut(prog(t, 2.65 + i * 0.12, 3.0 + i * 0.12));
+      $(c).style.opacity = p; $(c).style.transform = `scale(${0.85 + 0.15 * p})`;
+    });
+  }
+  // 2
+  if (t > 3.65 && t < 7.6) {
+    rise($('s2h'), t, 3.9, 50, 0.6);
+    rise($('s2s'), t, 4.05, 30, 0.5);
+    rise($('toggle'), t, 4.15, 30, 0.5);
+    const flip = easeInOut(prog(t, 5.6, 5.95));
+    $('knob').style.left = (5 + 106 * flip) + 'px';
+    $('tEN').style.color = rgb(mixc(CREAM, NAVY, flip));
+    $('tES').style.color = rgb(mixc(NAVY, CREAM, flip));
+    cards.forEach((c, i) => {
+      const p = easeOut(prog(t, 4.25 + i * 0.15, 4.8 + i * 0.15));
+      c.style.opacity = p;
+      c.style.transform = `translateY(${(1 - p) * 80}px) rotate(${(1 - p) * (i % 2 ? 3 : -3)}deg)`;
+      const cf = prog(t, 5.7 + i * 0.05, 6.05 + i * 0.05);
+      c.querySelectorAll('.en').forEach((e) => e.style.opacity = 1 - cf);
+      c.querySelectorAll('.es').forEach((e) => e.style.opacity = cf);
+      c.querySelector('.ok').style.opacity = prog(t, 4.85 + i * 0.15, 5.15 + i * 0.15);
+    });
+  }
+  // 3
+  if (t > 7.4 && t < 12.6) {
+    rise($('s3h'), t, 7.65, 50, 0.6);
+    rise($('term'), t, 7.8, 60, 0.55);
+    $('cmd').textContent = CMD.slice(0, Math.floor(CMD.length * prog(t, 8.1, 8.6)));
+    $('draft').style.opacity = easeOut(prog(t, 8.7, 9.0));
+    const hp = prog(t, 9.1, 9.4);
+    for (const id of ['bw', 'bd']) {
+      const i = $(id).querySelector('i');
+      i.style.background = `rgba(200,85,61,${0.32 * hp})`;
+      i.style.borderBottomColor = `rgba(232,128,107,${hp})`;
+      $(id).style.textDecoration = hp > 0.99 ? 'line-through rgba(232,128,107,0.9)' : 'none';
+    }
+    ['o1', 'o2', 'o3', 'o4', 'o5', 'o6'].forEach((o, i) => {
+      const at = [9.45, 9.75, 9.75, 10.05, 10.05, 10.05][i];
+      $(o).style.opacity = prog(t, at, at + 0.12);
+    });
+    const sp = prog(t, 10.625, 10.875);
+    $('stamp').style.opacity = sp;
+    $('stamp').style.transform = `rotate(-7deg) scale(${mix(1.6, 1, easeOut(sp))})`;
+  }
+  // 4
+  if (t > 12.4 && t < 16.975) {
+    rise($('s4h'), t, 12.65, 50, 0.6);
+    rise($('pfb'), t, 12.9, 90, 0.6);
+    rise($('pig'), t, 13.05, 90, 0.6);
+    for (const [post, at] of [['fbpost', 13.5], ['igpost', 13.7]]) {
+      const p = easeOut(prog(t, at, at + 0.5));
+      $(post).style.opacity = p;
+      $(post).style.transform = `translateY(${(1 - p) * -120}px)`;
+    }
+    for (const [toast, at] of [['fbt', 14.1], ['igt', 14.3]]) {
+      const p = easeOut(prog(t, at, at + 0.35));
+      $(toast).style.opacity = p * (1 - prog(t, 16.3, 16.5));
+      $(toast).style.transform = `translateX(-50%) translateY(${(1 - p) * 20}px)`;
+    }
+    rise($('lfb'), t, 13.3, 20, 0.4);
+    rise($('lig'), t, 13.45, 20, 0.4);
+  }
+  // 5
+  if (t > 16.775 && t < 20.725) {
+    rise($('s5h'), t, 17.0, 50, 0.6);
+    ['r1', 'r2', 'r3'].forEach((r, i) => rise($(r), t, 17.35 + i * 0.22, 30, 0.45));
+    rise($('veto'), t, 18.0, 30, 0.45);
+    $('vfill').style.width = (100 * easeInOut(prog(t, 18.2, 19.1))) + '%';
+    rise($('ledger'), t, 18.4, 30, 0.45);
+    ['l1', 'l2', 'l3'].forEach((l, i) => $(l).style.opacity = prog(t, 18.7 + i * 0.3, 18.82 + i * 0.3));
+  }
+  // 6
+  if (t > 20.525) {
+    rise($('end1'), t, 20.8, 60, 0.7);
+    rise($('end1b'), t, 21.05, 30, 0.5);
+    const cp = rise($('cta'), t, 21.4, 70, 0.6);
+    $('cta').style.transform += ` scale(${0.96 + 0.04 * cp})`;
+    rise($('end2'), t, 21.9, 20, 0.5);
+    rise($('end3'), t, 22.05, 20, 0.5);
+  }
+};
+</script>
+</body>
+</html>

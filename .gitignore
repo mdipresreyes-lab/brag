@@ -23,3 +23,8 @@ skills-lock.json
 **/.waveform-cache/
 
 .codesk
+
+# Dipriva showcase rebuild output
+showcase/*/composition/frames/
+showcase/*/composition/*.wav
+showcase/*/composition/node_modules/
