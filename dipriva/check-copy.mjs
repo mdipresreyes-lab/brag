@@ -57,6 +57,19 @@ for (const file of targets.flatMap(files)) {
   if (/\p{Extended_Pictographic}/u.test(text)) issues.push(['error', 'emoji']);
   if (/\s-\s/.test(text)) issues.push(['warn', 'spaced hyphen reads as a dash']);
   for (const rule of brand.warnTerms) if (term(rule).test(text)) issues.push(['warn', `${rule.label}`]);
+  // Captions and share copy: every figure must be a proof point or an approved
+  // firm figure, as in the dipriva-social gate. On-screen UI is not checked.
+  if (file.endsWith('.txt')) {
+    const allowed = new Set([
+      ...brand.claims.firmFigures.flatMap((f) => f.figures),
+      ...brand.claims.proofPoints.flatMap((p) => p.statement.match(/\$?\d[\d,.]*%?\+?/g) ?? []),
+    ].map((f) => f.replace(/[$,%+]/g, '')));
+    const prose = text.replace(/https?:\/\/\S+/g, '');
+    for (const figure of prose.match(/\d[\d,.]*/g) ?? []) {
+      const bare = figure.replace(/[,.]+$/, '').replace(/,/g, '');
+      if (!allowed.has(bare)) issues.push(['error', `figure "${bare}" is not a proof point or approved firm figure`]);
+    }
+  }
   const failed = issues.some(([severity]) => severity === 'error');
   if (failed) errors += 1;
   console.log(`${failed ? 'FAIL' : 'PASS'} ${file}`);

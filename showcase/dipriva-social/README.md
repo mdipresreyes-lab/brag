@@ -6,7 +6,9 @@ A 25-second vertical video that shows prospective Dipriva clients the engine tha
 |---|---|
 | `brag.mp4` | Final video. 1080 x 1920, 30 fps, 25.0 s, H.264 and AAC, about -15 LUFS. Poster baked in as frame 0. |
 | `brag.jpg` | Poster: the content gate rejecting a draft. |
-| `share-copy.txt` | Caption, ready to post. |
+| `share-copy.txt` | General share copy. |
+| `caption-instagram.txt` | Instagram Reel caption. No link (Instagram captions are not clickable); the address is on the final frame. |
+| `caption-facebook.txt` | Facebook Reel caption with the clickable booking link. |
 | `brag-plan.md` | Angle, sources and storyboard. |
 | `composition/` | Source: `index.html` (every frame is a pure function of time), `score.py` (original score), `capture.mjs` (frame capture), local fonts and media. |
 
