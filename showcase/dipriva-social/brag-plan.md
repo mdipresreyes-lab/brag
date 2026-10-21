@@ -30,7 +30,7 @@
 | 2 | 3.75 to 7.5 | Cream. Four draft cards: Facebook and Instagram feed carousels and Stories. EN to ES toggle. | "Draft Every Meta Format" / "In English and Spanish." | Bass and marimba enter on the bar. |
 | 3 | 7.5 to 12.5 | Navy. Real gate output, REJECTED stamp. | "Eliminate Off-Brand Copy in Code" | Arpeggio breathes out, low thud on the stamp. |
 | 4 | 12.5 to 16.875 | Cream. Two phones: Dipriva's own Facebook Page post and Instagram post, real renders, "Published via Graph API". | "Publish to Facebook and Instagram" | Posts land, two soft chimes. |
-| 5 | 16.875 to 20.625 | Navy. Checks, 12-hour veto bar, ledger with the duplicate skipped. | "Nothing Posts Without Approval" | Three chimes, ledger ticks. |
+| 5 | 16.875 to 20.625 | Navy. Checks, veto window bar, ledger with the duplicate skipped. | "Nothing Posts Without Approval" | Three chimes, ledger ticks. |
 | 6 | 20.625 to 25.0 | Cream. Call to action card. | "Engineer Your Content System" / "Dipriva builds and runs this engine for your business." / "Book a free 30-minute strategy session" / "dipriva.com/schedule" / "Official Meta APIs only. No scraping." | D major resolve, bell on the card. |
 
 Cuts land on the 96 BPM beat grid. Phone screens are neutral feed mockups: no Meta logos, Dipriva's own Page name, handle and profile image, no like or follower counts.
